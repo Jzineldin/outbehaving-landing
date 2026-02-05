@@ -377,6 +377,126 @@
             line-height: 1.4;
         }
 
+        
+        /* Premium Icon Styling */
+        .step-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(217, 70, 239, 0.2) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .step-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            border-radius: inherit;
+        }
+        .step-icon i {
+            width: 28px;
+            height: 28px;
+            color: var(--accent-violet);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pillar-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.15;
+            border-radius: inherit;
+        }
+        .pillar-icon i {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .pillar-icon.c1 { background: linear-gradient(135deg, #22c55e20, #22c55e05); border: 1px solid #22c55e30; }
+        .pillar-icon.c1 i { color: #22c55e; }
+        .pillar-icon.c2 { background: linear-gradient(135deg, #8b5cf620, #8b5cf605); border: 1px solid #8b5cf630; }
+        .pillar-icon.c2 i { color: #8b5cf6; }
+        .pillar-icon.c3 { background: linear-gradient(135deg, #f59e0b20, #f59e0b05); border: 1px solid #f59e0b30; }
+        .pillar-icon.c3 i { color: #f59e0b; }
+        .pillar-icon.c4 { background: linear-gradient(135deg, #eab30820, #eab30805); border: 1px solid #eab30830; }
+        .pillar-icon.c4 i { color: #eab308; }
+        .pillar-icon.c5 { background: linear-gradient(135deg, #3b82f620, #3b82f605); border: 1px solid #3b82f630; }
+        .pillar-icon.c5 i { color: #3b82f6; }
+        .pillar-icon.c6 { background: linear-gradient(135deg, #ef444420, #ef444405); border: 1px solid #ef444430; }
+        .pillar-icon.c6 i { color: #ef4444; }
+        .pillar-icon.c7 { background: linear-gradient(135deg, #06b6d420, #06b6d405); border: 1px solid #06b6d430; }
+        .pillar-icon.c7 i { color: #06b6d4; }
+        .pillar-icon.c8 { background: linear-gradient(135deg, #10b98120, #10b98105); border: 1px solid #10b98130; }
+        .pillar-icon.c8 i { color: #10b981; }
+        .pillar-icon.c9 { background: linear-gradient(135deg, #a855f720, #a855f705); border: 1px solid #a855f730; }
+        .pillar-icon.c9 i { color: #a855f7; }
+        .pillar-icon.c10 { background: linear-gradient(135deg, #64748b20, #64748b05); border: 1px solid #64748b30; }
+        .pillar-icon.c10 i { color: #64748b; }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(217, 70, 239, 0.1) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .feature-icon i {
+            width: 22px;
+            height: 22px;
+            color: var(--accent-violet);
+        }
+        
+        .benefit-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .benefit-icon.purple {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .benefit-icon.purple i { color: #8b5cf6; }
+        .benefit-icon.green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .benefit-icon.green i { color: #22c55e; }
+        .benefit-icon.amber {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        .benefit-icon.amber i { color: #f59e0b; }
+        .benefit-icon i {
+            width: 24px;
+            height: 24px;
+        }
+
         /* Champions */
         .champions-content {
             display: grid;
@@ -1031,7 +1151,7 @@
         const bodyMat = new THREE.MeshPhysicalMaterial({ color: 0xc0c0c8, metalness: 0.9, roughness: 0.15, clearcoat: 1, clearcoatRoughness: 0.1 });
         phoneGroup.add(new THREE.Mesh(bodyGeo, bodyMat));
 
-        // Create screen with canvas texture directly
+        // Create screen with canvas texture
         const screenW = phoneW3D - 0.1, screenH = phoneH3D - 0.12;
         
         // Draw screen content
@@ -1040,27 +1160,33 @@
         screenCanvas.height = 844;
         const ctx = screenCanvas.getContext('2d');
         
-        // Background
+        // Background gradient
         const grad = ctx.createLinearGradient(0, 0, 0, 844);
         grad.addColorStop(0, '#0f0f1a');
         grad.addColorStop(1, '#1a1a2e');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, 390, 844);
+        
+        // Draw app UI immediately
+        drawAppUI(ctx);
+        
+        function drawAppUI(ctx) {
+            // Helper for rounded rects
+            function rr(x, y, w, h, r) {
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                ctx.lineTo(x + r, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
 
-        // Helper
-        function rr(x, y, w, h, r) {
-            ctx.beginPath();
-            ctx.moveTo(x + r, y);
-            ctx.lineTo(x + w - r, y);
-            ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-            ctx.lineTo(x + w, y + h - r);
-            ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-            ctx.lineTo(x + r, y + h);
-            ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-            ctx.lineTo(x, y + r);
-            ctx.quadraticCurveTo(x, y, x + r, y);
-            ctx.closePath();
-        }
+        
 
         // Status bar
         ctx.fillStyle = '#fafafa';
