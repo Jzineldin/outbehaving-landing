@@ -70,8 +70,8 @@
             background: url('images/hero-abstract.png') center/cover;
             transform: scale(0.9);
             opacity: 0;
-            mask-image: radial-gradient(ellipse 90% 90% at center, black 30%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse 90% 90% at center, black 30%, transparent 80%);
+            mask-image: radial-gradient(ellipse 120% 120% at center, black 0%, black 20%, transparent 60%);
+            -webkit-mask-image: radial-gradient(ellipse 120% 120% at center, black 0%, black 20%, transparent 60%);
         }
 
         .layer-3 {
@@ -91,7 +91,13 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(9,9,11,0.3) 0%, rgba(9,9,11,0.6) 50%, rgba(9,9,11,0.85) 100%);
+            background: linear-gradient(180deg,
+                rgba(9,9,11,0.2) 0%,
+                rgba(9,9,11,0.3) 20%,
+                rgba(9,9,11,0.4) 40%,
+                rgba(9,9,11,0.55) 60%,
+                rgba(9,9,11,0.7) 80%,
+                rgba(9,9,11,0.85) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -184,6 +190,7 @@
             line-height: 1.08;
             letter-spacing: -0.03em;
             margin-bottom: 24px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
         .hero-subtitle {
             font-size: 18px;
@@ -231,7 +238,7 @@
         .hero-stat-label { font-size: 13px; color: var(--text-muted); }
 
         .hero-visual { display: flex; justify-content: center; align-items: center; }
-        #phone-canvas { width: 100%; height: 520px; cursor: grab; }
+        #phone-canvas { width: 100%; height: 620px; cursor: grab; }
         #phone-canvas:active { cursor: grabbing; }
 
         /* Sections */
@@ -250,6 +257,7 @@
             font-size: 40px;
             font-weight: 700;
             margin-bottom: 16px;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
         }
         .section-subtitle {
             font-size: 17px;
@@ -265,14 +273,17 @@
             gap: 24px;
         }
         .step-card {
-            background: linear-gradient(180deg, rgba(30, 30, 40, 0.9) 0%, rgba(20, 20, 28, 0.9) 100%);
+            background: linear-gradient(180deg, rgba(30, 30, 40, 0.95) 0%, rgba(20, 20, 28, 0.95) 100%);
             border: 1px solid var(--border-subtle);
             border-radius: 24px;
-            padding: 36px 28px;
+            padding: 40px 28px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
         }
         .step-card::before {
             content: '';
@@ -297,14 +308,22 @@
             top: 0; left: 0; right: 0; bottom: 0;
             pointer-events: none;
         }
-        .step-content { position: relative; z-index: 1; }
-        .step-icon {
-            width: 64px; height: 64px;
-            border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 20px;
+        .step-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
         }
-        .step-icon i { width: 28px; height: 28px; }
+        .step-icon {
+            width: 68px; height: 68px;
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .step-icon i { width: 30px; height: 30px; }
         .step-card:nth-child(1) .step-icon { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.05)); color: var(--accent-violet); }
         .step-card:nth-child(2) .step-icon { background: linear-gradient(135deg, rgba(217,70,239,0.2), rgba(217,70,239,0.05)); color: var(--accent-pink); }
         .step-card:nth-child(3) .step-icon { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.05)); color: var(--warning); }
@@ -321,40 +340,70 @@
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
         .step-desc {
             font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
+            flex-grow: 1;
         }
 
-        /* Pillars - with proper icons */
+        /* Pillars - Premium Design */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 16px;
         }
         .pillar-card {
-            background: var(--bg-card);
+            background: linear-gradient(180deg, rgba(30, 30, 40, 0.95) 0%, rgba(18, 18, 24, 0.95) 100%);
             border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 24px 16px;
+            border-radius: 20px;
+            padding: 28px 16px 24px;
             text-align: center;
-            transition: all 0.25s;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .pillar-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         .pillar-card:hover {
             border-color: var(--border-accent);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 0 60px rgba(139, 92, 246, 0.1);
         }
+        .pillar-card:hover::before { opacity: 1; }
+        .pillar-card:hover::after { opacity: 1; }
         .pillar-icon {
-            width: 48px; height: 48px;
-            border-radius: 12px;
+            width: 56px; height: 56px;
+            border-radius: 16px;
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 14px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
-        .pillar-icon i { width: 22px; height: 22px; color: white; }
+        .pillar-icon svg { width: 28px; height: 28px; }
         .pillar-icon.c1 { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
         .pillar-icon.c2 { background: linear-gradient(135deg, #3b82f6, #2563eb); }
         .pillar-icon.c3 { background: linear-gradient(135deg, #f59e0b, #d97706); }
@@ -367,27 +416,40 @@
         .pillar-icon.c10 { background: linear-gradient(135deg, #a855f7, #9333ea); }
         .pillar-title {
             font-family: var(--font-display);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.01em;
         }
         .pillar-tagline {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
         }
 
         /* Champions */
         .champions-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            gap: 48px;
+            align-items: stretch;
+        }
+        .champions-content > div:last-child {
+            display: flex;
+            flex-direction: column;
         }
         .champion-image {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
             border-radius: 24px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.4);
         }
         .champion-stats {
             display: grid;
@@ -396,53 +458,68 @@
             margin: 24px 0 32px;
         }
         .champion-stat {
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: 12px;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+        }
+        .champion-stat:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-accent);
         }
         .champion-stat-value {
             font-family: var(--font-display);
             font-size: 32px;
             font-weight: 700;
-            color: #ef4444;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            color: var(--accent-violet);
         }
-        .champion-stat-label { font-size: 13px; color: var(--text-secondary); }
+        .champion-stat-label { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
         .feature-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 16px;
-            padding: 16px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            transition: background 0.2s;
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            transition: all 0.3s;
+            flex: 1;
         }
-        .feature-item:hover { background: rgba(255,255,255,0.05); }
+        .feature-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--border-accent);
+        }
         .feature-icon {
-            width: 40px; height: 40px;
+            width: 44px; height: 44px;
             border-radius: 10px;
             background: var(--gradient-main);
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-        .feature-icon i { width: 18px; height: 18px; color: white; }
+        .feature-icon i { width: 20px; height: 20px; color: white; }
         .feature-text h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-        .feature-text p { font-size: 13px; color: var(--text-secondary); }
+        .feature-text p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 
         /* Ownership */
         .ownership-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
+            gap: 40px;
+            align-items: start;
         }
         .ownership-visual {
-            background: var(--bg-card);
-            border: 1px solid var(--border-accent);
-            border-radius: 24px;
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 50px 40px;
         }
         .ownership-chart {
             display: flex;
@@ -451,7 +528,7 @@
             height: 240px;
         }
         .ownership-donut {
-            width: 200px; height: 200px;
+            width: 180px; height: 180px;
             border-radius: 50%;
             background: conic-gradient(
                 var(--accent-violet) 0deg 100deg,
@@ -462,10 +539,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 60px rgba(139,92,246,0.2);
         }
         .ownership-donut-inner {
-            width: 120px; height: 120px;
+            width: 110px; height: 110px;
             border-radius: 50%;
             background: var(--bg-primary);
             display: flex;
@@ -482,57 +558,69 @@
         .ownership-legend {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 24px;
+            gap: 16px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 12px;
+            gap: 6px;
+            font-size: 11px;
             color: var(--text-secondary);
         }
-        .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
-        .ownership-benefits { display: flex; flex-direction: column; gap: 14px; }
+        .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+        .ownership-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
         .benefit-card {
-            background: var(--bg-card);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-subtle);
-            border-radius: 14px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 28px 24px;
             display: flex;
             align-items: flex-start;
             gap: 16px;
-            transition: all 0.25s;
+            transition: all 0.3s;
         }
         .benefit-card:hover {
             border-color: var(--border-accent);
-            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.05);
         }
         .benefit-icon {
-            width: 42px; height: 42px;
-            border-radius: 10px;
+            width: 48px; height: 48px;
+            border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-        .benefit-icon i { width: 20px; height: 20px; }
+        .benefit-icon i { width: 22px; height: 22px; }
         .benefit-icon.purple { background: rgba(139,92,246,0.15); color: var(--accent-violet); }
         .benefit-icon.green { background: rgba(34,197,94,0.15); color: var(--success); }
         .benefit-icon.orange { background: rgba(245,158,11,0.15); color: var(--warning); }
         .benefit-icon.pink { background: rgba(236,72,153,0.15); color: var(--accent-pink); }
-        .benefit-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
-        .benefit-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+        .benefit-title { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+        .benefit-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
         /* CTA */
         .cta-section { padding: 80px 0; }
         .cta-box {
-            background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(217,70,239,0.08));
+            background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(217,70,239,0.08) 50%, rgba(245,158,11,0.05) 100%);
             border: 1px solid var(--border-accent);
-            border-radius: 32px;
+            border-radius: 36px;
             padding: 80px 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3), 0 0 100px rgba(139, 92, 246, 0.1);
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
         }
         .cta-content { position: relative; z-index: 1; }
         .cta-title {
@@ -540,6 +628,7 @@
             font-size: 44px;
             font-weight: 700;
             margin-bottom: 16px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
         .cta-subtitle {
             font-size: 18px;
@@ -568,6 +657,182 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
         .footer-links a:hover { color: var(--text-primary); }
 
+        /* Imagine Section */
+        .imagine-section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .imagine-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+        .imagine-item {
+            opacity: 0;
+            transform: translateX(-250px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .imagine-item:nth-child(even) {
+            transform: translateX(250px);
+        }
+        .imagine-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .imagine-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-violet);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+        .imagine-title {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            max-width: 800px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .imagine-why {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .imagine-item:nth-child(odd) {
+            text-align: left;
+        }
+        .imagine-item:nth-child(even) {
+            text-align: right;
+            margin-left: auto;
+        }
+        .imagine-item:nth-child(even) .imagine-title,
+        .imagine-item:nth-child(even) .imagine-why {
+            margin-left: auto;
+        }
+
+        /* Stats Banner */
+        .stats-banner {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 40px 32px;
+            margin: 60px 0;
+        }
+        .stats-banner-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+        .stats-banner-item {
+            padding: 16px;
+        }
+        .stats-banner-value {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .stats-banner-value.red { color: #f87171; }
+        .stats-banner-value.violet { color: var(--accent-violet); }
+        .stats-banner-value.green { color: var(--success); }
+        .stats-banner-value.amber { color: var(--warning); }
+        .stats-banner-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Career Tools Section */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .career-card {
+            background: linear-gradient(180deg, rgba(30, 30, 40, 0.95) 0%, rgba(18, 18, 24, 0.95) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 36px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 280px;
+        }
+        .career-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .career-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.25), 0 0 60px rgba(139, 92, 246, 0.08);
+        }
+        .career-card:hover::before { opacity: 1; }
+        .career-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .career-card-icon svg { width: 28px; height: 28px; }
+        .career-card-icon.violet { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .career-card-icon.pink { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .career-card-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .career-card-icon.amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .career-card-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        .career-card-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .career-card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .career-feature-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 8px 14px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            color: var(--accent-violet);
+            transition: all 0.2s;
+        }
+        .career-feature-tag:hover {
+            background: rgba(139, 92, 246, 0.15);
+            transform: translateY(-1px);
+        }
+
         @media (max-width: 1200px) {
             .pillars-grid { grid-template-columns: repeat(5, 1fr); gap: 12px; }
         }
@@ -587,6 +852,14 @@
             .pillars-grid { grid-template-columns: repeat(2, 1fr); }
             .hero-stats { flex-direction: column; gap: 16px; }
             .champion-stats { grid-template-columns: 1fr; }
+            .imagine-title { font-size: 32px; }
+            .imagine-item:nth-child(even) { text-align: left; }
+            .imagine-item:nth-child(even) .imagine-title,
+            .imagine-item:nth-child(even) .imagine-why { margin-left: 0; }
+            .stats-banner-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .stats-banner-value { font-size: 28px; }
+            .career-grid { grid-template-columns: 1fr; }
+            .ownership-benefits { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -609,9 +882,10 @@
                         <span class="logo-text">Outbehaving</span>
                     </a>
                     <nav class="nav">
+                        <a href="#imagine" class="nav-link">Vision</a>
                         <a href="#how" class="nav-link">How it Works</a>
                         <a href="#platform" class="nav-link">Platform</a>
-                        <a href="#champions" class="nav-link">For Champions</a>
+                        <a href="#champions" class="nav-link">For Icons</a>
                         <a href="#ownership" class="nav-link">Ownership</a>
                     </nav>
                     <button class="btn-header">Join the Movement</button>
@@ -647,6 +921,33 @@
                     </div>
                     <div class="hero-visual">
                         <canvas id="phone-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="imagine-section" id="imagine">
+            <div class="container">
+                <div class="imagine-grid">
+                    <div class="imagine-item">
+                        <div class="imagine-label">Imagine</div>
+                        <h2 class="imagine-title">Redefining the global economy.<br><span class="text-gradient">Restoring fair wealth distribution.</span></h2>
+                        <p class="imagine-why">A delusionally ambitious vision, a world-class leadership team and an inevitable blueprint can change society forever.</p>
+                    </div>
+                    <div class="imagine-item">
+                        <div class="imagine-label">Imagine</div>
+                        <h2 class="imagine-title">A global giant owned by <span class="text-gradient">the people</span>, not the super-wealthy.</h2>
+                        <p class="imagine-why">Wealth concentration is flawed - 0.1% own 22% of global assets. Together, we disrupt this structure through ownership at scale.</p>
+                    </div>
+                    <div class="imagine-item">
+                        <div class="imagine-label">Imagine</div>
+                        <h2 class="imagine-title">80% of Athletes, Artists & Creators <span class="text-gradient">no longer facing financial distress.</span></h2>
+                        <p class="imagine-why">A platform guiding life, career and futures: offering community support, opportunities, ethical agents, partners and services.</p>
+                    </div>
+                    <div class="imagine-item">
+                        <div class="imagine-label">Imagine</div>
+                        <h2 class="imagine-title">Wealth that <span class="text-gradient">grows as you live.</span></h2>
+                        <p class="imagine-why">Everyday purchases become community capital that compounds over time. An economic model that rewards participation, not wealth privilege.</p>
                     </div>
                 </div>
             </div>
@@ -700,52 +1001,128 @@
                 </div>
                 <div class="pillars-grid">
                     <div class="pillar-card">
-                        <div class="pillar-icon c1"><i data-lucide="activity"></i></div>
+                        <div class="pillar-icon c1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3v18"/>
+                                <path d="M3 12h4l3-9 4 18 3-9h4"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Live</div>
                         <div class="pillar-tagline">Your life, in motion</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c2"><i data-lucide="user"></i></div>
+                        <div class="pillar-icon c2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+                                <path d="M12 4v-1M9 5l-1-1M15 5l1-1"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Identity</div>
                         <div class="pillar-tagline">Who you are becoming</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c3"><i data-lucide="compass"></i></div>
+                        <div class="pillar-icon c3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"/>
+                                <path d="M12 3v4"/>
+                                <path d="M12 17v4"/>
+                                <path d="M3 12h4"/>
+                                <path d="M17 12h4"/>
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 12l4-4"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Purpose</div>
                         <div class="pillar-tagline">Direction & meaning</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c4"><i data-lucide="sun"></i></div>
+                        <div class="pillar-icon c4">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"/>
+                                <path d="M12 2v2"/>
+                                <path d="M12 20v2"/>
+                                <path d="M4.93 4.93l1.41 1.41"/>
+                                <path d="M17.66 17.66l1.41 1.41"/>
+                                <path d="M2 12h2"/>
+                                <path d="M20 12h2"/>
+                                <path d="M6.34 17.66l-1.41 1.41"/>
+                                <path d="M19.07 4.93l-1.41 1.41"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Daily Life</div>
                         <div class="pillar-tagline">Making life lighter</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c5"><i data-lucide="wallet"></i></div>
+                        <div class="pillar-icon c5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 8h20v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8Z"/>
+                                <path d="M22 8L12 2 2 8"/>
+                                <path d="M12 12v6"/>
+                                <path d="M9 15h6"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Money</div>
                         <div class="pillar-tagline">Clarity & control</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c6"><i data-lucide="heart"></i></div>
+                        <div class="pillar-icon c6">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
+                                <path d="M12 12v5"/>
+                                <circle cx="12" cy="9" r="2"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Care</div>
                         <div class="pillar-tagline">Protection & balance</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c7"><i data-lucide="users"></i></div>
+                        <div class="pillar-icon c7">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="3"/>
+                                <circle cx="5" cy="12" r="2.5"/>
+                                <circle cx="19" cy="12" r="2.5"/>
+                                <path d="M5.5 14.5C3.5 15.5 2 17 2 19h6"/>
+                                <path d="M18.5 14.5c2 1 3.5 2.5 3.5 4.5h-6"/>
+                                <path d="M8.5 11c-1.5 1-3 2.5-3 5h13c0-2.5-1.5-4-3-5"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Community</div>
                         <div class="pillar-tagline">Collective strength</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c8"><i data-lucide="trending-up"></i></div>
+                        <div class="pillar-icon c8">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Ownership</div>
                         <div class="pillar-tagline">Power & participation</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c9"><i data-lucide="home"></i></div>
+                        <div class="pillar-icon c9">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
+                                <circle cx="12" cy="13" r="3"/>
+                                <path d="M9 22v-4a3 3 0 0 1 6 0v4"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Circle</div>
                         <div class="pillar-tagline">Shared life together</div>
                     </div>
                     <div class="pillar-card">
-                        <div class="pillar-icon c10"><i data-lucide="briefcase"></i></div>
+                        <div class="pillar-icon c10">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="7" width="18" height="13" rx="2"/>
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <path d="M12 12v4"/>
+                                <path d="M3 12h18"/>
+                                <circle cx="12" cy="12" r="1.5" fill="white"/>
+                            </svg>
+                        </div>
                         <div class="pillar-title">Career</div>
                         <div class="pillar-tagline">Work safely & fairly</div>
                     </div>
@@ -755,6 +1132,27 @@
 
         <section class="section" id="champions">
             <div class="container">
+                <div class="stats-banner">
+                    <div class="stats-banner-grid">
+                        <div class="stats-banner-item">
+                            <div class="stats-banner-value red">0.1%</div>
+                            <div class="stats-banner-label">Own 22% of global assets</div>
+                        </div>
+                        <div class="stats-banner-item">
+                            <div class="stats-banner-value red">80%</div>
+                            <div class="stats-banner-label">Of athletes face financial distress</div>
+                        </div>
+                        <div class="stats-banner-item">
+                            <div class="stats-banner-value violet">£1B</div>
+                            <div class="stats-banner-label">Target platform valuation</div>
+                        </div>
+                        <div class="stats-banner-item">
+                            <div class="stats-banner-value green">£500M</div>
+                            <div class="stats-banner-label">Equity stake for society</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="champions-content">
                     <div>
                         <img src="images/athlete.png" alt="Champion" class="champion-image">
@@ -797,6 +1195,95 @@
                                     <p>Structured guidance for life after peak career</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="career-tools">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Career Tools</div>
+                    <h2 class="section-title">Make your work pay, <span class="text-gradient">safely and fairly</span></h2>
+                    <p class="section-subtitle">Powerful tools designed specifically for cultural icons to protect their careers, contracts, and legacy.</p>
+                </div>
+                <div class="career-grid">
+                    <div class="career-card">
+                        <div class="career-card-icon violet">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <path d="M14 2v6h6"/>
+                                <circle cx="11" cy="14" r="3"/>
+                                <path d="M14 17l2 2"/>
+                                <path d="M9 10h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="career-card-title">Contract Hub</h3>
+                        <p class="career-card-desc">Upload contracts for AI-powered risk scanning. Compares against industry benchmarks, detects unfair clauses, and auto-extracts key dates and obligations.</p>
+                        <div class="career-card-features">
+                            <span class="career-feature-tag">AI Risk Scanning</span>
+                            <span class="career-feature-tag">Benchmark Analysis</span>
+                            <span class="career-feature-tag">Renewal Alerts</span>
+                        </div>
+                    </div>
+                    <div class="career-card">
+                        <div class="career-card-icon pink">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 8a4 4 0 0 1 8 0c0 3-2 4-4 6"/>
+                                <path d="M18 8a4 4 0 0 0-8 0c0 3 2 4 4 6"/>
+                                <circle cx="9" cy="18" r="2"/>
+                                <circle cx="15" cy="18" r="2"/>
+                                <path d="M11 18h2"/>
+                            </svg>
+                        </div>
+                        <h3 class="career-card-title">MatchMaker</h3>
+                        <p class="career-card-desc">Connect with Outbehaving-approved agents, brands, and legal professionals who have signed our ethical charter. Trust at the core of every deal.</p>
+                        <div class="career-card-features">
+                            <span class="career-feature-tag">Vetted Partners</span>
+                            <span class="career-feature-tag">Ethical Charter</span>
+                            <span class="career-feature-tag">Brand Matching</span>
+                        </div>
+                    </div>
+                    <div class="career-card">
+                        <div class="career-card-icon blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"/>
+                                <circle cx="12" cy="12" r="5"/>
+                                <circle cx="12" cy="12" r="1"/>
+                                <path d="M12 3v2"/>
+                                <path d="M12 19v2"/>
+                                <path d="M3 12h2"/>
+                                <path d="M19 12h2"/>
+                                <path d="M18.36 5.64l-1.42 1.42"/>
+                                <path d="M7.05 16.95l-1.41 1.41"/>
+                            </svg>
+                        </div>
+                        <h3 class="career-card-title">WatchTower</h3>
+                        <p class="career-card-desc">Monitors for emerging risks to your privacy or reputation. Flags threats before they escalate with rapid-response protocols.</p>
+                        <div class="career-card-features">
+                            <span class="career-feature-tag">Threat Intelligence</span>
+                            <span class="career-feature-tag">Privacy Monitoring</span>
+                            <span class="career-feature-tag">Crisis Response</span>
+                        </div>
+                    </div>
+                    <div class="career-card">
+                        <div class="career-card-icon amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3v18"/>
+                                <rect x="4" y="8" width="4" height="8" rx="1"/>
+                                <rect x="10" y="5" width="4" height="14" rx="1"/>
+                                <rect x="16" y="10" width="4" height="6" rx="1"/>
+                                <circle cx="6" cy="5" r="1.5"/>
+                                <circle cx="18" cy="7" r="1.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="career-card-title">Rights & IP Tracking</h3>
+                        <p class="career-card-desc">Canonical registry for works, rights, and revenue metadata. Track streams, sales, and royalty payments to ensure proper compensation.</p>
+                        <div class="career-card-features">
+                            <span class="career-feature-tag">Royalty Tracking</span>
+                            <span class="career-feature-tag">Rights Registry</span>
+                            <span class="career-feature-tag">Revenue Metadata</span>
                         </div>
                     </div>
                 </div>
@@ -865,9 +1352,17 @@
             <div class="container">
                 <div class="cta-box">
                     <div class="cta-content">
+                        <div class="section-label" style="margin-bottom: 16px;">Pre-Launch Bonus</div>
                         <h2 class="cta-title">Own your <span class="text-gradient">future</span></h2>
                         <p class="cta-subtitle">Join the movement. Turn everyday activity into shared prosperity. Become an owner in the people's platform for a fairer future.</p>
-                        <button class="btn-primary">Join the Movement <i data-lucide="arrow-right"></i></button>
+                        <div style="background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 16px 24px; display: inline-block; margin-bottom: 24px;">
+                            <span style="color: var(--success); font-weight: 700; font-size: 18px;">3x Equity</span>
+                            <span style="color: var(--text-secondary); font-size: 14px; margin-left: 8px;">for sign-ups in the first 48 hours</span>
+                        </div>
+                        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                            <button class="btn-primary">Join the Movement <i data-lucide="arrow-right"></i></button>
+                            <button class="btn-secondary"><i data-lucide="file-text"></i> Read the Vision</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -878,11 +1373,12 @@
                 <div class="footer-inner">
                     <div class="footer-brand">
                         <div class="footer-mark">O</div>
-                        <span>Outbehaving – A people-owned movement</span>
+                        <span>Outbehaving – A people-owned movement for a fairer future</span>
                     </div>
                     <div class="footer-links">
-                        <a href="#">About</a>
-                        <a href="#">Vision</a>
+                        <a href="Imagine Outbehaving.pdf" target="_blank">Imagine</a>
+                        <a href="Outbehaving - Vision to Reality.pdf" target="_blank">Vision</a>
+                        <a href="Outbehaving for Cultural Icons - Platform Functionality Brief Description.pdf" target="_blank">Platform</a>
                         <a href="#">Contact</a>
                     </div>
                 </div>
@@ -993,7 +1489,7 @@
         
         const phoneContainer = document.querySelector('.hero-visual');
         let phoneW = phoneContainer.offsetWidth || 500;
-        let phoneH = 520;
+        let phoneH = 620;
         phoneRenderer.setSize(phoneW, phoneH);
         phoneRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -1163,15 +1659,146 @@
         ctx.fill();
 
         const screenTexture = new THREE.CanvasTexture(screenCanvas);
-        const screenMat = new THREE.MeshBasicMaterial({ map: screenTexture });
+        screenTexture.needsUpdate = true;
+        const screenMat = new THREE.MeshBasicMaterial({ map: screenTexture, toneMapped: false });
         const screen = new THREE.Mesh(new THREE.PlaneGeometry(screenW, screenH), screenMat);
-        screen.position.z = phoneD/2 + 0.002;
+        screen.position.z = phoneD/2 + 0.016;
         phoneGroup.add(screen);
 
-        const island = new THREE.Mesh(new THREE.PlaneGeometry(0.35, 0.07), new THREE.MeshBasicMaterial({ color: 0x000000 }));
-        island.position.set(0, screenH/2 - 0.1, phoneD/2 + 0.003);
+        // Screen bezel/border
+        const bezelMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        const bezel = new THREE.Mesh(new THREE.PlaneGeometry(screenW + 0.02, screenH + 0.02), bezelMat);
+        bezel.position.z = phoneD/2 + 0.015;
+        phoneGroup.add(bezel);
+
+        // Dynamic island (notch)
+        const island = new THREE.Mesh(new THREE.PlaneGeometry(0.35, 0.08), new THREE.MeshBasicMaterial({ color: 0x000000 }));
+        island.position.set(0, screenH/2 - 0.12, phoneD/2 + 0.017);
         phoneGroup.add(island);
 
+        // === BACK OF PHONE - 3D iPhone Camera Module ===
+        const camModuleX = -phoneW3D/2 + 0.42;
+        const camModuleY = phoneH3D/2 - 0.42;
+        const camModuleZ = -phoneD/2;
+
+        // Camera module housing - 3D box with rounded appearance
+        const camModuleSize = 0.55;
+        const camModuleDepth = 0.04;
+        const camModuleGeo = new THREE.BoxGeometry(camModuleSize, camModuleSize, camModuleDepth);
+        const camModuleMat = new THREE.MeshPhysicalMaterial({
+            color: 0x1a1a1e,
+            metalness: 0.4,
+            roughness: 0.3,
+            clearcoat: 0.8
+        });
+        const camModule = new THREE.Mesh(camModuleGeo, camModuleMat);
+        camModule.position.set(camModuleX, camModuleY, camModuleZ - camModuleDepth/2);
+        phoneGroup.add(camModule);
+
+        // Camera lens creation function - 3D cylinder lenses
+        function createLens(x, y) {
+            const lensGroup = new THREE.Group();
+
+            // Outer ring (metallic)
+            const outerRingGeo = new THREE.CylinderGeometry(0.11, 0.11, 0.025, 32);
+            const outerRingMat = new THREE.MeshPhysicalMaterial({
+                color: 0x3a3a42,
+                metalness: 0.9,
+                roughness: 0.2
+            });
+            const outerRing = new THREE.Mesh(outerRingGeo, outerRingMat);
+            outerRing.rotation.x = Math.PI / 2;
+            lensGroup.add(outerRing);
+
+            // Inner dark glass lens
+            const lensGlassGeo = new THREE.CylinderGeometry(0.085, 0.085, 0.03, 32);
+            const lensGlassMat = new THREE.MeshPhysicalMaterial({
+                color: 0x0a0a15,
+                metalness: 0.1,
+                roughness: 0.05,
+                clearcoat: 1,
+                clearcoatRoughness: 0.1,
+                reflectivity: 0.9
+            });
+            const lensGlass = new THREE.Mesh(lensGlassGeo, lensGlassMat);
+            lensGlass.rotation.x = Math.PI / 2;
+            lensGlass.position.z = -0.005;
+            lensGroup.add(lensGlass);
+
+            // Inner highlight ring
+            const innerRingGeo = new THREE.TorusGeometry(0.06, 0.008, 8, 32);
+            const innerRingMat = new THREE.MeshBasicMaterial({ color: 0x2a2a35 });
+            const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
+            innerRing.position.z = -0.018;
+            lensGroup.add(innerRing);
+
+            // Blue reflection dot
+            const reflectGeo = new THREE.CircleGeometry(0.015, 16);
+            const reflectMat = new THREE.MeshBasicMaterial({
+                color: 0x4466ff,
+                transparent: true,
+                opacity: 0.6
+            });
+            const reflect = new THREE.Mesh(reflectGeo, reflectMat);
+            reflect.position.set(0.02, 0.02, -0.02);
+            lensGroup.add(reflect);
+
+            lensGroup.position.set(x, y, camModuleZ - camModuleDepth - 0.01);
+            return lensGroup;
+        }
+
+        // Add 3 camera lenses in triangle formation
+        phoneGroup.add(createLens(camModuleX - 0.12, camModuleY + 0.12));  // Top-left
+        phoneGroup.add(createLens(camModuleX + 0.12, camModuleY + 0.12));  // Top-right
+        phoneGroup.add(createLens(camModuleX - 0.12, camModuleY - 0.12));  // Bottom-left
+
+        // Flash - 3D cylinder
+        const flashGeo = new THREE.CylinderGeometry(0.045, 0.045, 0.015, 16);
+        const flashMat = new THREE.MeshPhysicalMaterial({
+            color: 0xfffde8,
+            emissive: 0xfff5cc,
+            emissiveIntensity: 0.3,
+            metalness: 0.1,
+            roughness: 0.2
+        });
+        const flash = new THREE.Mesh(flashGeo, flashMat);
+        flash.rotation.x = Math.PI / 2;
+        flash.position.set(camModuleX + 0.12, camModuleY - 0.12, camModuleZ - camModuleDepth - 0.008);
+        phoneGroup.add(flash);
+
+        // LiDAR sensor (small black dot)
+        const lidarGeo = new THREE.CylinderGeometry(0.025, 0.025, 0.01, 16);
+        const lidarMat = new THREE.MeshPhysicalMaterial({
+            color: 0x0a0a0a,
+            metalness: 0.8,
+            roughness: 0.1
+        });
+        const lidar = new THREE.Mesh(lidarGeo, lidarMat);
+        lidar.rotation.x = Math.PI / 2;
+        lidar.position.set(camModuleX + 0.12, camModuleY, camModuleZ - camModuleDepth - 0.005);
+        phoneGroup.add(lidar);
+
+        // Microphone hole
+        const micGeo = new THREE.CylinderGeometry(0.012, 0.012, 0.01, 8);
+        const micMat = new THREE.MeshBasicMaterial({ color: 0x1a1a1a });
+        const mic = new THREE.Mesh(micGeo, micMat);
+        mic.rotation.x = Math.PI / 2;
+        mic.position.set(camModuleX, camModuleY - 0.12, camModuleZ - camModuleDepth - 0.005);
+        phoneGroup.add(mic);
+
+        // Apple logo on back - subtle embossed circle
+        const logoBackGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.003, 32);
+        const logoBackMat = new THREE.MeshPhysicalMaterial({
+            color: 0xc8c8d0,
+            metalness: 0.95,
+            roughness: 0.05
+        });
+        const logoBack = new THREE.Mesh(logoBackGeo, logoBackMat);
+        logoBack.rotation.x = Math.PI / 2;
+        logoBack.position.set(0, -0.2, camModuleZ - 0.002);
+        phoneGroup.add(logoBack);
+
+        // Side buttons
         const btnGeo = new THREE.BoxGeometry(0.015, 0.15, 0.04);
         const btnMat = new THREE.MeshPhysicalMaterial({ color: 0xb0b0b8, metalness: 0.9, roughness: 0.15 });
         const btn1 = new THREE.Mesh(btnGeo, btnMat);
@@ -1203,6 +1830,26 @@
             phoneCamera.updateProjectionMatrix();
             phoneRenderer.setSize(phoneW, phoneH);
         });
+
+        // Scroll animations for Imagine section
+        const imagineItems = document.querySelectorAll('.imagine-item');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const imagineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }, observerOptions);
+
+        imagineItems.forEach(item => imagineObserver.observe(item));
     </script>
 </body>
 </html>
